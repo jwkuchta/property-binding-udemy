@@ -8,30 +8,34 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class CockpitComponent implements OnInit {
 
-  newServerName = '';
-  newServerContent = '';
-  
   // we are creating new properties for out custom event
   // <> indicates generic type, define data type inside
+  
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>()
   @Output() blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>()
+
+  // we no longer need this as now we are using #serverName and passing the value to onAddServer and onAddBlueprint
+  // newServerName = '';
+  newServerContent = '';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onAddServer() {
+  onAddServer(name, content) {
     this.serverCreated.emit({
-      serverName: this.newServerName, 
-      serverContent: this.newServerContent
+      serverName: name.value, 
+      // serverContent: this.newServerContent
+      serverContent: content.value
     })
   }
 
-  onAddBlueprint() {
+  onAddBlueprint(name, content) {
     this.blueprintCreated.emit({
-      serverName: this.newServerName,
-      serverContent: this.newServerContent
+      serverName: name.value,
+      // serverContent: this.newServerContent
+      serverContent: content.value
     })
   }
 

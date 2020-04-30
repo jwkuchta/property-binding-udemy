@@ -10,6 +10,7 @@ export class AppComponent {
     {type: 'server', name: 'test server', content: 'just a test'}
   ];
 
+  // executed after the button is clicked
   onServerAdded(data: {serverName: string, serverContent: string}) {
     this.serverElements.push({
       type: 'server',
