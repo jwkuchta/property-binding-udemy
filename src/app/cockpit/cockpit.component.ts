@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 // import { EventEmitter } from 'protractor';
 
 @Component({
@@ -16,7 +16,10 @@ export class CockpitComponent implements OnInit {
 
   // we no longer need this as now we are using #serverName and passing the value to onAddServer and onAddBlueprint
   // newServerName = '';
-  newServerContent = '';
+  // newServerContent = '';
+
+  // @viewChild takes two arguments: the selector and static: true/false
+  @ViewChild('serverContent', {static: true}) serverContent
 
   constructor() { }
 
@@ -24,19 +27,23 @@ export class CockpitComponent implements OnInit {
   }
 
   onAddServer(name, content) {
-    this.serverCreated.emit({
-      serverName: name.value, 
-      // serverContent: this.newServerContent
-      serverContent: content.value
-    })
+
+    console.log(this.serverContent)
+    // this.serverCreated.emit({
+    //   serverName: name.value, 
+    //   // serverContent: this.newServerContent
+    //   serverContent: content.value
+    // })
   }
 
   onAddBlueprint(name, content) {
-    this.blueprintCreated.emit({
-      serverName: name.value,
-      // serverContent: this.newServerContent
-      serverContent: content.value
-    })
+
+    // console.log(this.serverContent)
+    // this.blueprintCreated.emit({
+    //   serverName: name.value,
+    //   // serverContent: this.newServerContent
+    //   serverContent: content.value
+    // })
   }
 
 }
