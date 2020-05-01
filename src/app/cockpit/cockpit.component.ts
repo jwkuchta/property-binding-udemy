@@ -19,6 +19,7 @@ export class CockpitComponent implements OnInit {
   // newServerContent = '';
 
   // @viewChild takes two arguments: the selector and static: true/false
+  // this is a reference to the element
   @ViewChild('serverContent', {static: true}) serverContent
 
   constructor() { }
