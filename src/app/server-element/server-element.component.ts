@@ -5,13 +5,7 @@ import {
   ViewEncapsulation, 
   OnChanges,
   DoCheck,
-  AfterContentInit,
-  AfterContentChecked,
-  SimpleChange,
   SimpleChanges,
-  AfterViewInit,
-  AfterViewChecked,
-  OnDestroy,
   ViewChild,
   ContentChild,
   ElementRef
@@ -24,15 +18,22 @@ import {
   // this line will prevent encapsulation and will apply this components css globally
   encapsulation: ViewEncapsulation.None // Emulated is default and not necessary to add, another option is Native
 })
+
 export class ServerElementComponent implements OnInit, OnChanges, DoCheck {
 
   // AfterViewInit gives you access to the Elements
   @ViewChild('heading', {static: true}) header: ElementRef
 
-  // available after AfterContentInit
+  // available in AfterContentInit after ngOnInit
   @ContentChild('contentParagraph', {static: true}) paragraph: ElementRef
   
+  // it exposed name to parent component. It is now ok to bind to it.
   @Input() name: string
+  @Input() type: string
+  @Input() content: string
+
+  // previously
+  // @Input('srvElement) element: {type: string, name: string, content: string}
 
   constructor() { 
     console.log('constractor called')

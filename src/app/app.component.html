@@ -17,13 +17,16 @@
       <app-server-element 
       *ngFor="let serverElement of serverElements"
       [name]="serverElement.name"
+      [type]="serverElement.type"
+      [content]="serverElement.content"
       >
-      <p #contentParagraph>
+      <!-- <p #contentParagraph>
         <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
         <em *ngIf="serverElement.type === 'blueprint'" style="color: blue">{{ serverElement.content }}</em>
-      </p>
+      </p> -->
       </app-server-element>
    
     </div>
   </div>
 </div>
+

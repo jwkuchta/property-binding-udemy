@@ -5,8 +5,10 @@ import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '
   templateUrl: './cockpit.component.html',
   styleUrls: ['./cockpit.component.css']
 })
+
 export class CockpitComponent implements OnInit {
   
+  // makes it listenable to from outside
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>() 
   @Output() blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>()
 
@@ -18,6 +20,7 @@ export class CockpitComponent implements OnInit {
   }
 
   onAddServer(name, content) {
+    // emits the event to the parent component
     this.serverCreated.emit({
       serverName: name.value, 
       serverContent: content.value
